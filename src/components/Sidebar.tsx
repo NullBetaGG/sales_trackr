@@ -13,7 +13,7 @@ import {
 export function Sidebar() {
     return (
         <div>
-            <div className="hover:w-[12rem] group/sidebar h-[100vh] w-[5.2rem] bg-[#0b0b0b] mt-[-10.5rem] transition-all duration-500 rounded-[1rem] max-w[12rem] fixed">
+            <div className="hover:w-[12rem] group/sidebar h-[100vh] w-[5.2rem] bg-[#0b0b0b] mt-[-10.5rem] transition-all duration-700 rounded-[1rem] max-w[12rem] fixed">
                 <div className="w-[3.1rem] h-[3.1rem] bg-[#eb000000] rounded-[50%] border-[3px] border-[#ff6600] box-border ml-[1rem] mt-[1rem]">
                     <Player
                         className="mt-[-2rem]"
@@ -35,32 +35,61 @@ export function Sidebar() {
                     <div className="flex mt-[1.5rem]">
                         <button className="flex items-center">
                             <Element4 size="28" color="#ff6600" variant="TwoTone" />
-                            <span className="hidden group-hover/sidebar:flex ml-[1rem]">Dashboard</span>
+                            <div className="w-[1rem] transition-all grow duration-[2500ms] group-hover/sidebar:w-[7rem] h-[1.5rem] ml-[0.5rem] border-[#ff6600]">
+                                <span className="w-[1rem] font-light transition-all opacity-0 group-hover/sidebar:opacity-100">
+                                    <span>Dashboard</span>
+                                </span>
+                            </div>
                         </button>
                     </div>
                     <div className="flex mt-[1.5rem]">
-                        <button>
+                        <button className="flex items-center">
                             <Activity size="28" color="#ff6600" variant="TwoTone" />
+                            <div className="w-[1rem] transition-all grow duration-[2500ms] group-hover/sidebar:w-[7rem] h-[1.5rem] ml-[0.5rem] border-[#ff6600]">
+                                <span className="w-[1rem] font-light transition-all opacity-0 group-hover/sidebar:opacity-100">
+                                    <span>Analytics</span>
+                                </span>
+                            </div>
                         </button>
                     </div>
                     <div className="flex mt-[1.5rem]">
-                        <button>
+                        <button className="flex items-center">
                             <Coin1 size="28" color="#ff6600" variant="TwoTone" />
+                            <div className="w-[1rem] transition-all grow duration-[2500ms] group-hover/sidebar:w-[7rem] h-[1.5rem] ml-[0.5rem] border-[#ff6600]">
+                                <span className="w-[1rem] font-light transition-all opacity-0 group-hover/sidebar:opacity-100">
+                                    <span>Vendas</span>
+                                </span>
+                            </div>
                         </button>
                     </div>
                     <div className="flex mt-[1.5rem]">
-                        <button>
+                        <button className="flex items-center">
                             <Map size="28" color="#ff6600" variant="TwoTone" />
+                            <div className="w-[1rem] transition-all grow duration-[2500ms] group-hover/sidebar:w-[7rem] h-[1.5rem] ml-[0.5rem] border-[#ff6600]">
+                                <span className="w-[1rem] font-light transition-all opacity-0 group-hover/sidebar:opacity-100">
+                                    <span>Mapas</span>
+                                </span>
+                            </div>
                         </button>
                     </div>
                     <div className="flex mt-[1.5rem]">
-                        <button>
+                        <button className="flex items-center">
                             <MoneyRecive size="28" color="#ff6600" variant="TwoTone" />
+                            <div className="w-[1rem] transition-all grow duration-[2500ms] group-hover/sidebar:w-[7rem] h-[1.5rem] ml-[0.5rem] border-[#ff6600]">
+                                <span className="w-[1rem] font-light transition-all opacity-0 group-hover/sidebar:opacity-100">
+                                    <span>Fornecedores</span>
+                                </span>
+                            </div>
                         </button>
                     </div>
                     <div className="flex mt-[1.5rem]">
-                        <button>
+                        <button className="flex items-center">
                             <Setting2 size="28" color="#ff6600" variant="TwoTone" />
+                            <div className="w-[1rem] transition-all grow duration-[2500ms] group-hover/sidebar:w-[7rem] h-[1.5rem] ml-[0.5rem] border-[#ff6600]">
+                                <span className="w-[1rem] font-light transition-all opacity-0 group-hover/sidebar:opacity-100">
+                                    <span>Configurações</span>
+                                </span>
+                            </div>
                         </button>
                     </div>
                 </div>
