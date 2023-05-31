@@ -3,6 +3,7 @@ import { Sidebar } from '@/components/Sidebar'
 import '@/styles/globals.css'
 import type { AppProps } from 'next/app'
 import { useRouter } from 'next/router'
+import { ProtectedRoute } from '@/routes/protectRoute'
 
 export default function App({ Component, pageProps }: AppProps) {
   const router = useRouter()
@@ -13,10 +14,12 @@ export default function App({ Component, pageProps }: AppProps) {
   }
 
   return (
-    <div>
-      <Header />
-      <Sidebar />
-      <Component {...pageProps} />
-    </div>
+    <ProtectedRoute>
+      <div>
+        <Header />
+        <Sidebar />
+        <Component {...pageProps} />
+      </div>
+    </ProtectedRoute>
   )
 }
