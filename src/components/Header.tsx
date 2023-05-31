@@ -1,13 +1,10 @@
-import styles from './Header.module.css'
-import { Player } from '@lottiefiles/react-lottie-player';
-import Image from 'next/image';
 import { UserOctagon } from 'iconsax-react';
 
 export function Header() {
     const userName = 'Fábio Oliveira';
     const userMail = 'fabio@germinareagro.com.br'
     return (
-        <header className={styles.header}>
+        <header className="bg-black h-[10rem] rounded-2xl m-[.5rem] flex justify-end text-white  bg-gradient-to-r from-black from-18% via-[#ff6600] via-62% to-[#0f900a] to-83%">
             <div className="text-[#ffffff] opacity-90 text-[0.9rem] flex flex-col justify-end w-[15rem] h-[3.5rem] mt-[-0.5rem] font-light">
                 <span className="justify-end flex">{userName}</span>
                 <span className="justify-end flex">{userMail}</span>
