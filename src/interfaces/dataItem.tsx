@@ -1,4 +1,5 @@
 export interface DataItem {
+    date: any;
     Cidade_Comprador: string;
     Cidade_Fornecedor: string;
     Comprador: string;
