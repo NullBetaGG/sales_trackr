@@ -11,7 +11,6 @@ import {
 } from 'iconsax-react';
 import { useRouter } from 'next/router';
 
-
 export function Sidebar() {
     const router = useRouter();
     return (
