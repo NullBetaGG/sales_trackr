@@ -4,6 +4,8 @@ import '@/styles/globals.css'
 import type { AppProps } from 'next/app'
 import { useRouter } from 'next/router'
 import { ProtectedRoute } from '@/routes/protectRoute'
+import DataProvider from '../context/Data/DataProvider'
+import VolumeProvider from '../context/Volume/VolumeProvider'
 
 export default function App({ Component, pageProps }: AppProps) {
   const router = useRouter()
@@ -16,9 +18,13 @@ export default function App({ Component, pageProps }: AppProps) {
   return (
     <ProtectedRoute>
       <div>
-        <Header />
-        <Sidebar />
-        <Component {...pageProps} />
+        <DataProvider>
+          <VolumeProvider>
+            <Header />
+            <Sidebar />
+            <Component {...pageProps} />
+          </VolumeProvider>
+        </DataProvider>
       </div>
     </ProtectedRoute>
   )
