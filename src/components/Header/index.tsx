@@ -1,10 +1,19 @@
+import { useState } from 'react';
 import { UserOctagon } from 'iconsax-react';
 
 export function Header() {
+    const [homolog, setHomolog] = useState(true);
     const userName = 'Fábio Oliveira';
     const userMail = 'fabio@germinareagro.com.br'
     return (
         <header className="bg-black h-[10rem] rounded-2xl m-[.5rem] flex justify-end text-white  bg-gradient-to-r from-black from-18% via-[#ff6600] via-62% to-[#0f900a] to-83%">
+            {homolog && (
+                <div className="bg-[#ff0000] w-[13vw] flex justify-center h-[3rem] ml-[100px] rounded-lg">
+                    <b className="mt-[0.7rem]">
+                        Ambiente de Desenvolvimento
+                    </b>
+                </div>
+            )}
             <div className="text-[#ffffff] opacity-90 text-[0.9rem] flex flex-col justify-end w-[15rem] h-[3.5rem] mt-[-0.5rem] font-light">
                 <span className="justify-end flex">{userName}</span>
                 <span className="justify-end flex">{userMail}</span>
