@@ -1,18 +1,12 @@
-import React, { useEffect, useRef, useState } from "react";
+import React, { useEffect, useRef, useState, useContext } from "react";
 import GetDataYear from "@/services/get_data_per_year";
 import Chart from 'chart.js/auto';
+import VolumeContext from '@/context/Volume/VolumeContext';
 
 export function ChartVolume() {
-    const [data, setData] = useState<any>(null);
     const chartRef = useRef<HTMLCanvasElement | null>(null);
-
-    useEffect(() => {
-        const fetchData = async () => {
-            const result = GetDataYear();
-            setData(result);
-        };
-        fetchData();
-    }, []);
+    const data = useContext(VolumeContext);
+    const chartInstanceRef = useRef<any>(null);
 
     useEffect(() => {
         if (data && chartRef.current) {
@@ -32,7 +26,12 @@ export function ChartVolume() {
                     'Novembro',
                     'Dezembro',
                 ];
-                new Chart(ctx, {
+
+                if (chartInstanceRef.current) {
+                    chartInstanceRef.current.destroy();
+                }
+
+                chartInstanceRef.current = new Chart(ctx, {
                     type: 'bar',
                     data: {
                         labels: labels,
@@ -77,7 +76,7 @@ export function ChartVolume() {
                 console.error('Failed to get context of the canvas element.');
             }
         }
-    }, [data]);
+    }, [data, chartInstanceRef]);
 
     return (
         <div className="flex justify-between w-[100%] rounded-[1.5rem] bg-black h-[25rem]">

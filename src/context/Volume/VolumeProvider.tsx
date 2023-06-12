@@ -1,24 +1,37 @@
 import { DataItem } from "@/interfaces/dataItem";
-import moment from 'moment';
+import getData from "@/services/get_data";
+import VolumeContext from "./VolumeContext";
+import React, { useState, useEffect } from "react";
+import moment from "moment"
 
-export default function GetDataYear() {
+interface VolumeProviderProps {
+    children: React.ReactNode;
+};
+
+export default function VolumeProvider({ children }: any) {
+    const [data, setData] = useState<DataItem[]>([]);
+    const arraySums: any = [];
+
+    useEffect(() => {
+        getData().then((result) => {
+            setData(result as DataItem[]);
+        });
+    }, []);
+
     const arrDateFilter: Record<number, Record<number, any[]>> = {};
-    const yearC = 2022;
-    const sumArray: number[] = [];
+
+    console.log(data);
 
     const fetchData = async () => {
         try {
-            const response = await fetch('/data/dados_1.json');
-            const data = await response.json();
-
-            const arrData: DataItem[] = Object.values(data);
+            const arrData = data;
             console.log(arrData);
 
             for (let i = 0; i < arrData.length; i++) {
                 const dateString = arrData[i].dt_contrato;
                 const dateMoment = moment(dateString, 'YYYY-MM-DD');
                 arrData[i].date = dateMoment;
-            }
+            };
 
             arrData.forEach((obj: any) => {
                 const month = moment(obj.date).month();
@@ -34,20 +47,20 @@ export default function GetDataYear() {
                 arrDateFilter[year][month].push(obj);
             });
 
-            console.log(arrDateFilter);
-
-            let soma = 0;
+            const yearCurrent = 2022;
+            let sums = 0;
 
             for (let idx = 0; idx < 12; idx++) {
-                const element = arrDateFilter[yearC][idx];
+                const element = arrDateFilter[yearCurrent][idx];
                 if (element) {
                     for (let i = 0; i < element.length; i++) {
                         const obj = element[i].Quantidade;
-                        soma += obj;
+                        sums += obj;
                     }
                 }
-                sumArray.push(soma);
-                soma = 0;
+                arraySums.push(sums);
+                console.log(arraySums);
+                sums = 0;
             }
 
         } catch (error) {
@@ -57,6 +70,9 @@ export default function GetDataYear() {
 
     fetchData();
 
-    return sumArray;
-
+    return (
+        <VolumeContext.Provider value={arraySums}>
+            {children}
+        </VolumeContext.Provider>
+    );
 }

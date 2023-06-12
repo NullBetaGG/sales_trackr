@@ -11,7 +11,8 @@ export default function Login() {
 
     function validLogin() {
         const users: User[] = [
-            { mail: 'jose@germinareagro.com.br', password: 'jojo23', admin: true },
+            { mail: 'jose@germinareagro.com.br', password: 'a33rdc#', admin: true },
+            { mail: 'ernani@germinareagro.com.br', password: 'l45dop@', admin: true },
             { mail: 'fabio@germinareagro.com.br', password: 'fabio91', admin: true },
             { mail: 'silvio@germinareagro.com.br', password: 'silvio13', admin: false },
             { mail: 'paulo@germinareagro.com.br', password: 'paulo12', admin: false }
