@@ -1,6 +1,6 @@
 import { Player } from '@lottiefiles/react-lottie-player';
 import React, { useState } from 'react';
-import { User } from '@/interfaces/users';
+import { User } from '@/types/users';
 import { useRouter } from 'next/router';
 import Image from 'next/image';
 import { message, notification } from 'antd';

@@ -1,5 +1,5 @@
-import { DataItem } from "@/interfaces/dataItem";
-import getData from "@/services/get_data";
+import { DataItem } from "@/types/dataItem";
+import getData from "@/api/get_data";
 import DataContext from "./DataContext";
 import React, { useState, useEffect } from "react";
 

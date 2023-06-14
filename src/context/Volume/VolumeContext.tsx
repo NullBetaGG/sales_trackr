@@ -1,4 +1,4 @@
-import { DataItem } from "@/interfaces/dataItem";
+import { DataItem } from "@/types/dataItem";
 import { createContext } from "react";
 
 export const VolumeContext = createContext<any>(undefined);

@@ -1,9 +1,9 @@
 import React, { useEffect, useState } from 'react';
 import Link from 'next/link';
 import { useRouter } from 'next/router';
-import getData from "@/services/get_data"; 7
-import { ChartVolume } from '@/components/ChartVolume';
-import { ChartPrice } from '@/components/ChartPrice';
+import getData from "@/api/get_data"; 7
+import { ChartVolume } from '@/components/Charts/ChartVolume';
+import { ChartPrice } from '@/components/Charts/ChartPrice';
 
 export default function Home() {
 

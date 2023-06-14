@@ -1,5 +1,5 @@
-import { DataItem } from "@/interfaces/dataItem";
-import getData from "@/services/get_data";
+import { DataItem } from "@/types/dataItem";
+import getData from "@/api/get_data";
 import VolumeContext from "./VolumeContext";
 import React, { useState, useEffect, useCallback } from "react";
 import moment from "moment"

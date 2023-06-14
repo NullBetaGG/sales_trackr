@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import LightweightCharts from "lightweight-charts";
-import GetDataDate from "@/services/get_data_per_date";
+import GetDataDate from "@/api/get_data_per_date";
 
 export function ChartPrice() {
     const [data, setData] = useState<any>([]);
