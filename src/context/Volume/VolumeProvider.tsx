@@ -11,6 +11,7 @@ interface VolumeProviderProps {
 export default function VolumeProvider({ children }: any) {
     const [data, setData] = useState<DataItem[]>([]);
     const arraySums: any = [];
+    const arrDateFilter: Record<number, Record<number, any[]>> = {};
 
     useEffect(() => {
         getData().then((result) => {
@@ -18,14 +19,9 @@ export default function VolumeProvider({ children }: any) {
         });
     }, []);
 
-    const arrDateFilter: Record<number, Record<number, any[]>> = {};
-
-    console.log(data);
-
     const fetchData = async () => {
         try {
             const arrData = data;
-            console.log(arrData);
 
             for (let i = 0; i < arrData.length; i++) {
                 const dateString = arrData[i].dt_contrato;
@@ -59,7 +55,6 @@ export default function VolumeProvider({ children }: any) {
                     }
                 }
                 arraySums.push(sums);
-                console.log(arraySums);
                 sums = 0;
             }
 

@@ -1,5 +1,6 @@
 export interface User {
     mail: string,
     password: string,
-    admin: boolean
+    admin: boolean,
+    name: string
 }
