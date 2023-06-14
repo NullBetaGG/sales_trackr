@@ -13,7 +13,7 @@ export function Header() {
                 {homolog && (
                     <div className="bg-[#ff0000] w-[13vw] flex justify-center h-[3rem] ml-[100px] rounded-lg">
                         <b className="mt-[0.7rem]">
-                            Ambiente Desenvolvimento
+                            Ambiente de Desenvolvimento
                         </b>
                     </div>
                 )}
