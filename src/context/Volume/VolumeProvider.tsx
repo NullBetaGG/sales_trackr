@@ -1,7 +1,7 @@
 import { DataItem } from "@/interfaces/dataItem";
 import getData from "@/services/get_data";
 import VolumeContext from "./VolumeContext";
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useCallback } from "react";
 import moment from "moment"
 
 interface VolumeProviderProps {
@@ -19,7 +19,7 @@ export default function VolumeProvider({ children }: any) {
         });
     }, []);
 
-    const fetchData = async () => {
+    const fetchData = useCallback(async () => {
         try {
             const arrData = data;
 
@@ -59,11 +59,17 @@ export default function VolumeProvider({ children }: any) {
             }
 
         } catch (error) {
-            console.error('Error fetching data:', error);
+            console.error('Error fetching data ta dando erro aqui no volume provider porra:', error);
         }
-    };
+        // eslint-disable-next-line react-hooks/exhaustive-deps
+    }, [data]);
 
-    fetchData();
+    useEffect(() => {
+        if (data.length > 0) {
+            fetchData();
+        }
+    }, [data, fetchData]);
+
 
     return (
         <VolumeContext.Provider value={arraySums}>

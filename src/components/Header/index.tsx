@@ -1,11 +1,44 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { Logout } from 'iconsax-react';
-import { ShowModal } from '@/components/Modal';
+import { Button, Modal } from 'antd'
+import { useRouter } from 'next/router';
+
 
 export function Header() {
     const [homolog, setHomolog] = useState(true);
-    const userName = localStorage.getItem('userName');
-    const userMail = localStorage.getItem('userMail');
+    const [userName, setUserName] = useState<any>('Name');
+    const [userMail, setUserMail] = useState<any>('Mail');
+    const [loading, setLoading] = useState(false);
+    const [open, setOpen] = useState(false);
+    const router = useRouter();
+
+    useEffect(() => {
+        const name = localStorage.getItem('userName');
+        const mail = localStorage.getItem('userMail');
+        setUserName(name);
+        setUserMail(mail);
+    }, []);
+
+    const showModal = () => {
+        setOpen(true);
+    };
+
+    const handleOk = () => {
+        setLoading(true);
+        setTimeout(() => {
+            setLoading(false);
+            setOpen(false);
+            localStorage.removeItem('isLoggedIn');
+            localStorage.removeItem('userName');
+            localStorage.removeItem('userMail');
+            router.push('/login')
+        }, 1500);
+    };
+
+    const handleCancel = () => {
+        setOpen(false);
+    };
+
 
     return (
         <div>
@@ -22,13 +55,32 @@ export function Header() {
                     <span className="justify-end flex">{userMail}</span>
                 </div>
                 <div className="mr-3 w-[3.5rem] h-[3.5rem] rounded-full flex items-center justify-center">
-                    <ShowModal
-                        content="Deseja sair?"
-                        buttonStyle="hover:scale-110 transition-transform duration-300 hover:border-2px"
-                        buttonContent=<Logout size="40" color="#ff6600" variant="Broken" />
-                    />
+                    <button
+                        className="hover:scale-110 transition-transform duration-300 hover:border-2px"
+                        onClick={showModal}
+                    >
+                        <Logout size="40" color="#ff6600" variant="Broken" />
+                    </button>
                 </div>
             </header>
+            <Modal
+                open={open}
+                title="Logout"
+                onOk={handleOk}
+                onCancel={handleCancel}
+                width={200}
+                footer={[
+                    <Button key="back" onClick={handleCancel}>
+                        Não
+                    </Button>,
+                    <Button className="bg-[#ff0000] text-[#ffffff]" key="submit" loading={loading} onClick={handleOk}>
+                        Sim
+                    </Button>
+                ]}
+                style={{ right: 0, transform: 'none', marginRight: '60px', marginTop: '-40px' }}
+            >
+                <p>Deseja sair?</p>
+            </Modal>
         </div>
     )
 }
