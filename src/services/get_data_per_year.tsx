@@ -10,15 +10,13 @@ export default function GetDataYear() {
         try {
             const response = await fetch('/data/dados_1.json');
             const data = await response.json();
-
             const arrData: DataItem[] = Object.values(data);
-            console.log(arrData);
 
             for (let i = 0; i < arrData.length; i++) {
                 const dateString = arrData[i].dt_contrato;
                 const dateMoment = moment(dateString, 'YYYY-MM-DD');
                 arrData[i].date = dateMoment;
-            }
+            };
 
             arrData.forEach((obj: any) => {
                 const month = moment(obj.date).month();
@@ -34,8 +32,6 @@ export default function GetDataYear() {
                 arrDateFilter[year][month].push(obj);
             });
 
-            console.log(arrDateFilter);
-
             let soma = 0;
 
             for (let idx = 0; idx < 12; idx++) {
@@ -48,11 +44,11 @@ export default function GetDataYear() {
                 }
                 sumArray.push(soma);
                 soma = 0;
-            }
+            };
 
         } catch (error) {
             console.error('Error fetching data:', error);
-        }
+        };
     };
 
     fetchData();

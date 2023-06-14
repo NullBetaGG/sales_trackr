@@ -1,5 +1,4 @@
-import React, { useEffect, useRef, useState, useContext } from "react";
-import GetDataYear from "@/services/get_data_per_year";
+import React, { useEffect, useRef, useContext } from "react";
 import Chart from 'chart.js/auto';
 import VolumeContext from '@/context/Volume/VolumeContext';
 

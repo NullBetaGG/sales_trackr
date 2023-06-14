@@ -8,18 +8,13 @@ export default async function GetDataDate() {
         try {
             const response = await fetch('/data/dados_1.json');
             const data = await response.json();
-
             const arrData: DataItem[] = Object.values(data);
-            console.log(arrData);
 
             for (let i = 0; i < arrData.length; i++) {
                 const dateString = arrData[i].dt_contrato;
                 const dateMoment = moment(dateString, 'YYYY-MM-DD');
                 arrData[i].date = dateMoment;
-            }
-
-            console.log(arrData);
-
+            };
             arrData.forEach((obj: any) => {
                 const month = moment(obj.date).month();
                 const year = moment(obj.date).year();
@@ -33,8 +28,6 @@ export default async function GetDataDate() {
 
                 arrDateFilter[year][month].push(obj);
             });
-            console.log(arrDateFilter);
-
         } catch (error) {
             console.error('Error fetching data:', error);
         }

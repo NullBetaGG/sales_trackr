@@ -13,8 +13,6 @@ export function ChartPrice() {
         fetchData();
     }, []);
 
-    console.log(data);
-
     // useEffect(() => {
     //     var chart = LightweightCharts.createChart(document.body, {
     //         width: 600,
