@@ -2,7 +2,7 @@ import { useState } from 'react';
 import { UserOctagon } from 'iconsax-react';
 
 export function Header() {
-    const [homolog, setHomolog] = useState(true);
+    const [homolog, setHomolog] = useState(false);
     const userName = 'Fábio Oliveira';
     const userMail = 'fabio@germinareagro.com.br'
     return (
