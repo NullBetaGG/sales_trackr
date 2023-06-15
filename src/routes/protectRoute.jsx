@@ -1,16 +1,15 @@
-import React, { useEffect } from 'react';
-import { useRouter } from 'next/router';
+import React, { useEffect } from "react";
+import { useRouter } from "next/router";
 
 export function ProtectedRoute({ children }) {
-    const router = useRouter();
+  const router = useRouter();
 
-    useEffect(() => {
-        const isLoggedIn = localStorage.getItem('isLoggedIn');
-        if (isLoggedIn != "true") {
-            router.push('/login');
-        }
-    }, [router]);
+  useEffect(() => {
+    const isLoggedIn = localStorage.getItem("isLoggedIn");
+    if (isLoggedIn != "true") {
+      router.push("/login");
+    }
+  }, [router]);
 
-    return <>{children}</>;
+  return <>{children}</>;
 }
-

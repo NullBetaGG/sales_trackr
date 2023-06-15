@@ -1,5 +1,5 @@
 export interface DataDate {
-    [ano: number]: {
-        [mes: number]: any[];
-    };
+  [ano: number]: {
+    [mes: number]: any[];
+  };
 }
