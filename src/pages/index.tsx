@@ -3,11 +3,10 @@ import Link from 'next/link';
 import { useRouter } from 'next/router';
 import getData from "@/api/get_data"; 7
 import { ChartVolume } from '@/components/Charts/ChartVolume';
-import { ChartPrice } from '@/components/Charts/ChartPrice';
+import ChartPrice from '@/components/Charts/ChartPrice';
+import { TreeMap } from '@/components/Charts/TreeMap';
 
 export default function Home() {
-
-
   const router = useRouter()
   const handleDoubleClick = () => {
     router.push("/sales");
@@ -33,8 +32,7 @@ export default function Home() {
       <div>
         <div className="hover:border-[#888888] flex justify-center hover:scale-[1.03] transition-all duration-[500ms] bg-[#2d2d2d] hover:border-2px w-[40rem] h-[25rem] z-20 rounded-[1.5rem]"
         >
-          <span className="text-[#ff6600] uppercase flex items-center font-light">And here will be some graph probably</span>
-
+          <TreeMap />
         </div>
         <div className="hover:border-[#888888] mt-6 flex justify-center hover:scale-[1.03] transition-all duration-[500ms] bg-[#2d2d2d] hover:border-2px w-[40rem] h-[25rem] z-20 rounded-[1.5rem]"
         >

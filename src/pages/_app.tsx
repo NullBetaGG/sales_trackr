@@ -6,6 +6,7 @@ import { useRouter } from 'next/router'
 import { ProtectedRoute } from '@/routes/protectRoute'
 import DataProvider from '../context/Data/DataProvider'
 import VolumeProvider from '../context/Volume/VolumeProvider'
+import PriceProvider from '../context/Price/PriceProvider'
 
 export default function App({ Component, pageProps }: AppProps) {
   const router = useRouter()
@@ -20,9 +21,11 @@ export default function App({ Component, pageProps }: AppProps) {
       <div>
         <DataProvider>
           <VolumeProvider>
-            <Header />
-            <Sidebar />
-            <Component {...pageProps} />
+            <PriceProvider>
+              <Header />
+              <Sidebar />
+              <Component {...pageProps} />
+            </PriceProvider>
           </VolumeProvider>
         </DataProvider>
       </div>
