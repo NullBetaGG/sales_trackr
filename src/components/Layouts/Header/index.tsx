@@ -42,7 +42,7 @@ export function Header() {
 
   return (
     <div>
-      <header className="bg-black h-[10rem] rounded-2xl m-[.5rem] flex justify-end text-white  bg-gradient-to-r from-black from-18% via-[#ff6600] via-62% to-[#0f900a] to-83%">
+      <header className="h-[10rem] rounded-2xl m-[.5rem] flex justify-end text-white  bg-[#191919]">
         {homolog && (
           <div className="bg-[#ff0000] w-[13vw] flex justify-center h-[3rem] ml-[100px] rounded-lg">
             <b className="mt-[0.7rem]">

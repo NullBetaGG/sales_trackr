@@ -15,8 +15,8 @@ export default function ChartComponent() {
       console.log(dataFil[32].datas);
       if (chartElement) {
         const chart = createChart(chartElement, {
-          width: 650,
-          height: 400,
+          width: 820,
+          height: 480,
           layout: {
             background: {
               color: '#000000',
@@ -75,7 +75,7 @@ export default function ChartComponent() {
 
   return (
     <div
-      className="w-[100%] bg-black"
+      className="w-[100%] rounded-[1rem] py-8 bg-black"
       id="chart"
     />
   );

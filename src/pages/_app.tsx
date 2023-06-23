@@ -7,6 +7,10 @@ import { ProtectedRoute } from '@/routes/protectRoute'
 import DataProvider from '../context/Data/DataProvider'
 import VolumeProvider from '../context/Volume/VolumeProvider'
 import PriceProvider from '../context/Price/PriceProvider'
+import ProductProvider from '@/context/Product/ProductProvider'
+import ClientProvider from '@/context/Buyers/ClientProvider'
+import SupplierProvider from '@/context/Suppliers/SupplierProvider'
+import VolumeProductProvider from '@/context/VolumeProduct/VolumeProductProvider'
 
 export default function App({ Component, pageProps }: AppProps) {
   const router = useRouter()
@@ -22,9 +26,17 @@ export default function App({ Component, pageProps }: AppProps) {
         <DataProvider>
           <VolumeProvider>
             <PriceProvider>
-              <Header />
-              <Sidebar />
-              <Component {...pageProps} />
+              <ProductProvider>
+                <ClientProvider>
+                  <SupplierProvider>
+                    <VolumeProductProvider>
+                      <Header />
+                      <Sidebar />
+                      <Component {...pageProps} />
+                    </VolumeProductProvider>
+                  </SupplierProvider>
+                </ClientProvider>
+              </ProductProvider>
             </PriceProvider>
           </VolumeProvider>
         </DataProvider>

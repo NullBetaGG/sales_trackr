@@ -1,13 +1,13 @@
 import React, { useEffect, useRef, useContext, useState } from "react";
 import Chart from 'chart.js/auto';
-import VolumeContext from '@/context/Volume/VolumeContext';
-import { YearObj } from "@/types/volume";
+import VolumeProductContext from '@/context/VolumeProduct/VolumeProductContext';
 
-export function ChartVolume() {
+
+export function ChartVolumeProduct() {
   const chartRef = useRef<HTMLCanvasElement | null>(null);
-  const dataArr: YearObj[] = useContext(VolumeContext);
+  const dataArr: any[] = useContext(VolumeProductContext);
   const chartInstanceRef = useRef<any>(null);
-  const [year, setYear] = useState<string>('2022');
+  const [year, setYear] = useState<number>(2022);
 
 
   useEffect(() => {
@@ -26,7 +26,7 @@ export function ChartVolume() {
 
       let yearObj2 = null;
       for (const obj of dataArr) {
-        if (obj.ano === '2023') {
+        if (obj.ano === 2023) {
           yearObj2 = obj;
           break;
         }
@@ -37,7 +37,7 @@ export function ChartVolume() {
       }
       let avrg: any[] = [];
       if (month2022 && month2023) {
-        const result = month2023.map((value2023: any, index) => {
+        const result = month2023.map((value2023: any, index: any) => {
           const value2022 = month2022![index];
           const sum = value2022 + value2023;
           const average = value2023 === 0 ? 0 : sum / 2;

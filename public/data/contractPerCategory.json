@@ -1,6 +1,6 @@
 [
   {
-    "name": "fert",
+    "name": "Fert",
     "data": [
       {
         "nr_contrato": 10587,
@@ -537,7 +537,7 @@
     ]
   },
   {
-    "name": "farelo",
+    "name": "Farelo",
     "data": [
       {
         "nr_contrato": 9900,
@@ -32519,7 +32519,7 @@
     ]
   },
   {
-    "name": "caroco",
+    "name": "Caroço",
     "data": [
       {
         "nr_contrato": 8488,
@@ -37236,7 +37236,7 @@
     ]
   },
   {
-    "name": "casca",
+    "name": "Casca",
     "data": [
       {
         "nr_contrato": 9202,
@@ -41535,7 +41535,7 @@
     ]
   },
   {
-    "name": "otc",
+    "name": "OTC",
     "data": [
       {
         "nr_contrato": 11042,
@@ -41730,7 +41730,7 @@
     ]
   },
   {
-    "name": "ddgs",
+    "name": "DDGS",
     "data": [
       {
         "nr_contrato": 9973,
@@ -50722,7 +50722,7 @@
     ]
   },
   {
-    "name": "outros",
+    "name": "Outros",
     "data": [
       {
         "nr_contrato": 8324,
@@ -53463,7 +53463,7 @@
     ]
   },
   {
-    "name": "frete",
+    "name": "Frete",
     "data": [
       {
         "nr_contrato": 8635,
@@ -60137,7 +60137,7 @@
     ]
   },
   {
-    "name": "germe",
+    "name": "Germe",
     "data": [
       {
         "nr_contrato": 8588,
@@ -60446,7 +60446,7 @@
     ]
   },
   {
-    "name": "milho",
+    "name": "Milho",
     "data": [
       {
         "nr_contrato": 8610,
@@ -62332,7 +62332,7 @@
     ]
   },
   {
-    "name": "oleo",
+    "name": "Oleo",
     "data": [
       {
         "nr_contrato": 8752,
@@ -62394,7 +62394,7 @@
     ]
   },
   {
-    "name": "sojaDesativada",
+    "name": "Soja Desativada",
     "data": [
       {
         "nr_contrato": 10673,
@@ -65344,7 +65344,7 @@
     ]
   },
   {
-    "name": "soja",
+    "name": "Soja",
     "data": [
       {
         "nr_contrato": 8383,
