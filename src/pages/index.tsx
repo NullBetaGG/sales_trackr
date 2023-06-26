@@ -1,52 +1,61 @@
 import React, { useEffect, useState } from 'react';
-import Link from 'next/link';
 import { useRouter } from 'next/router';
-import getData from "@/api/get_data"; 7
 import { ChartVolume } from '@/components/Charts/ChartVolume';
-import { ChartPrice } from '@/components/Charts/ChartPrice';
+import { TreeMapProduct } from '@/components/Charts/TreeMapProducts';
+import { TreeMapClient } from '@/components/Charts/TreeMapClient';
+import { TreeMapSupplier } from '@/components/Charts/TreeMapSupplier';
+
 
 export default function Home() {
-
-
   const router = useRouter()
-  const handleDoubleClick = () => {
+  const handleClickSales = () => {
     router.push("/sales");
+  };
+  const handleClickAnalytics = () => {
+    router.push("/analytics");
+  };
+  const handleClickSuppliers = () => {
+    router.push("/suppliers");
   };
 
   return (
     <div className="w-[99vw] pl-[7rem] pr-[3rem] flex justify-between mx-2 h-[90vh] mt-[-6rem]">
       <div>
         <div
-          className="hover:border-[#888888] flex justify-center hover:scale-[1.03] transition-all duration-[500ms] bg-[#2d2d2d] hover:border-2px w-[40rem] h-[25rem] z-20 rounded-[1.5rem]"
-          onDoubleClick={handleDoubleClick}
+          className="hover:border-[#888888] justify-center hover:scale-[1.015] transition-all duration-[500ms] bg-[#000000] hover:border-2px w-[53rem] h-[28rem] z-20 rounded-[0.5rem]"
+          onDoubleClick={handleClickSales}
         >
+          <div className='text-[#ff6600] flex w-[100%] text-[1.2rem] font-extralight font-sans justify-center items-center mb-[0.2rem]'>
+            <p className='mt-[0.5rem]'>Volume de Vendas Geral</p>
+          </div>
           <ChartVolume />
-
         </div>
         <div
-          className="hover:border-[#888888] mt-6 flex justify-center hover:scale-[1.03] transition-all duration-[500ms] bg-[#2d2d2d] hover:border-2px w-[40rem] h-[25rem] z-20 rounded-[1.5rem]"
+          className="hover:border-[#888888] mt-6 justify-center hover:scale-[1.015] transition-all duration-[500ms] bg-[#000000] hover:border-2px w-[53rem] h-[28rem] z-20 rounded-[0.5rem]"
+          onDoubleClick={handleClickSales}
         >
-          <span className="text-[#ff6600] uppercase flex items-center font-light">And here will be some another graph probably</span>
-
+          <div className='text-[#ff6600] text-[1.2rem] font-extralight font-sans flex w-[100%] justify-center items-center mb-[0.2rem]'>
+            <p className='mt-[0.5rem]'>Top 10 Compradores</p>
+          </div>
+          <TreeMapClient />
         </div>
       </div>
       <div>
-        <div className="hover:border-[#888888] flex justify-center hover:scale-[1.03] transition-all duration-[500ms] bg-[#2d2d2d] hover:border-2px w-[40rem] h-[25rem] z-20 rounded-[1.5rem]"
+        <div className="hover:border-[#888888] justify-center hover:scale-[1.015] transition-all duration-[500ms] bg-[#000000] hover:border-2px w-[53rem] h-[28rem] z-20 rounded-[0.5rem]"
+          onDoubleClick={handleClickAnalytics}
         >
-          <span className="text-[#ff6600] uppercase flex items-center font-light">And here will be some graph probably</span>
-
+          <div className='text-[#ff6600] text-[1.2rem] font-extralight font-sans flex w-[100%] justify-center items-center mb-[0.2rem]'>
+            <p className='mt-[0.5rem]'>Ranking Geral de Produtos</p>
+          </div>
+          <TreeMapProduct />
         </div>
-        <div className="hover:border-[#888888] mt-6 flex justify-center hover:scale-[1.03] transition-all duration-[500ms] bg-[#2d2d2d] hover:border-2px w-[40rem] h-[25rem] z-20 rounded-[1.5rem]"
+        <div className="hover:border-[#888888] mt-6 justify-center hover:scale-[1.015] transition-all duration-[500ms] bg-[#000000] hover:border-2px w-[53rem] h-[28rem] z-20 rounded-[0.5rem]"
+          onDoubleClick={handleClickSuppliers}
         >
-          <span className="text-[#ff6600] uppercase flex items-center font-light">And here will be some another graph probably</span>
-
-        </div>
-      </div>
-      <div>
-        <div className="hover:border-[#888888] flex justify-center hover:scale-[1.02] transition-all duration-[500ms] bg-[#2d2d2d] hover:border-2px w-[25rem] h-[51rem] z-20 rounded-[1.5rem]"
-        >
-          <span className="text-[#ff6600] uppercase flex items-center font-light">and here will be something cool</span>
-
+          <div className='text-[#ff6600] text-[1.2rem] font-extralight font-sans flex w-[100%] justify-center items-center mb-[0.2rem]'>
+            <p className='mt-[0.5rem]'>Top 10 Fornecedores</p>
+          </div>
+          <TreeMapSupplier />
         </div>
       </div>
     </div>

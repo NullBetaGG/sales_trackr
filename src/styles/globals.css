@@ -10,9 +10,9 @@
 
 @media (prefers-color-scheme: dark) {
   :root {
-    --foreground-rgb: 255, 255, 255;
-    --background-start-rgb: 0, 0, 0;
-    --background-end-rgb: 0, 0, 0;
+    --foreground-rgb: 25, 25, 25;
+    --background-start-rgb: 25, 25, 25;
+    --background-end-rgb: 25, 25, 25;
   }
 }
 
@@ -21,4 +21,17 @@ body {
   background: linear-gradient(to bottom,
       transparent,
       rgb(var(--background-end-rgb))) rgb(var(--background-start-rgb));
+}
+
+.apexcharts-menu-icon {
+  display: none !important;
+}
+
+.apexcharts-canvas {
+  border-radius: 50px !important;
+}
+
+#myChart {
+  width: 780px !important;
+  height: 400px !important;
 }

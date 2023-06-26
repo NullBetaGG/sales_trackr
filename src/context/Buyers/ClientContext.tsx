@@ -1,0 +1,5 @@
+import { createContext } from "react";
+
+export const ClientContext = createContext<any>(undefined);
+
+export default ClientContext;
