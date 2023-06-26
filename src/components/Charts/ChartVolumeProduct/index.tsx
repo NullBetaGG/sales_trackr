@@ -128,7 +128,7 @@ export function ChartVolumeProduct() {
   }, [dataArr, chartInstanceRef, year]);
 
   return (
-    <div className="flex justify-between w-[90%] rounded-[0.5rem] ml-[2rem] bg-black h-[22rem]">
+    <div className="flex justify-between w-[93%] rounded-[0.5rem] ml-[3rem] bg-black h-[28rem]">
       <canvas ref={chartRef} className="" id="myChart"></canvas>
     </div>
   );

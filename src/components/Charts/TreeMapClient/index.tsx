@@ -12,7 +12,6 @@ interface Value {
 export function TreeMapClient() {
   const Chart = dynamic(() => import("react-apexcharts"), { ssr: false });
   const dataArr: any[] = useContext(ClientContext);
-  console.log(dataArr);
 
   const top10 = dataArr.slice(0, 10).map((item, index) => {
     let wordsToExtract = 1;
@@ -92,9 +91,6 @@ export function TreeMapClient() {
     },
     colors: ['#187795']
   };
-
-  console.log("Top 10 compradores", top10);
-  console.log("Esse é o array completinho pra tu ver", dataArr);
 
   return (
     <div className="mt-[-15px] ml-[5px]">

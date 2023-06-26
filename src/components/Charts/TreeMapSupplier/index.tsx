@@ -12,7 +12,6 @@ interface Value {
 export function TreeMapSupplier() {
   const Chart = dynamic(() => import("react-apexcharts"), { ssr: false });
   const dataArr: any[] = useContext(SupplierContext);
-  console.log(dataArr);
 
   const top10 = dataArr.slice(0, 10).map((item, index) => {
     let wordsToExtract = 1;

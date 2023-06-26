@@ -12,7 +12,6 @@ interface Value {
 
 export function TreeMapProduct() {
   const dataArr: Data[] = useContext(ProductContext);
-  console.log(dataArr);
 
   const arrValues: Value[] = [];
   dataArr.forEach((prod) => {
@@ -42,8 +41,6 @@ export function TreeMapProduct() {
     x: item.x,
     y: parseFloat(item.y.toFixed(2)) // Arredondando para duas casas decimais
   }));
-
-  console.log(roundedArrValues);
 
   const Chart = dynamic(() => import("react-apexcharts"), { ssr: false });
   const series = [

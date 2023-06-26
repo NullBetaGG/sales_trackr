@@ -1,18 +1,17 @@
-import React, { useEffect, useState, useContext, useRef } from "react";
+import React, { useEffect, useContext, useRef } from "react";
 import { CrosshairMode, createChart } from "lightweight-charts";
 import PriceContext from "@/context/Price/PriceContext";
 import { PricesProduct } from "@/types/pricesProduct";
 
 export default function ChartComponent() {
   const dataFil: PricesProduct[] = useContext(PriceContext);
-  const [chartCreated, setChartCreated] = useState(false);
+  // const [chartCreated, setChartCreated] = useState(false);
+  const chartRef = useRef<HTMLElement | null>(null);
 
   useEffect(() => {
-    if (typeof window !== "undefined" && dataFil.length > 0 && !chartCreated) {
+    if (typeof window !== "undefined" && dataFil.length > 0 && !chartRef.current) {
       const data = dataFil[32].datas;
       const chartElement = window.document.getElementById('chart');
-      console.log(chartElement);
-      console.log(dataFil[32].datas);
       if (chartElement) {
         const chart = createChart(chartElement, {
           width: 820,
@@ -68,14 +67,14 @@ export default function ChartComponent() {
           chartData.map((item) => ({ time: item.time, value: item.value }))
         );
 
-        setChartCreated(true);
+        chartRef.current = chartElement;
       }
     }
-  }, [dataFil, chartCreated]);
+  }, [dataFil]);
 
   return (
     <div
-      className="w-[100%] rounded-[1rem] py-8 bg-black"
+      className="w-[100%] rounded-[1rem] bg-black"
       id="chart"
     />
   );
