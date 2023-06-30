@@ -1,19 +1,55 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 import React, { useEffect, useRef, useContext, useState } from "react";
 import Chart from 'chart.js/auto';
 import VolumeProductContext from '@/context/VolumeProduct/VolumeProductContext';
+import { Contract } from "@/types/groupedItens";
+
+interface Produto {
+  name: string;
+  data: {
+    ano: string;
+    meses: Contract[][];
+  }[];
+}
 
 
-export function ChartVolumeProduct() {
+export function ChartVolumeProduct(props: any) {
   const chartRef = useRef<HTMLCanvasElement | null>(null);
   const dataArr: any[] = useContext(VolumeProductContext);
   const chartInstanceRef = useRef<any>(null);
-  const [year, setYear] = useState<number>(2022);
-
+  const [year, setYear] = useState<string>('2022');
+  let nameProduct = props.dataProduct.toLowerCase();
 
   useEffect(() => {
-    if (dataArr && chartRef.current) {
+    let newArray: any[] = [];
+    dataArr.forEach((product) => {
+      if (product.name === nameProduct) {
+        newArray = product.data;
+      }
+    });
+
+    const ArrFilter: any = [];
+
+    newArray.forEach((yearMonth) => {
+      const { ano, meses } = yearMonth;
+      const newMonths = [];
+
+      for (let i = 0; i < meses.length; i++) {
+        const month = meses[i];
+
+        if (Array.isArray(month)) {
+          const sums = month.reduce((total, contrato) => total + contrato.Quantidade, 0);
+          newMonths.push(sums);
+        } else {
+          newMonths.push(0);
+        }
+      }
+      ArrFilter.push({ ano, meses: newMonths });
+    });
+
+    if (ArrFilter && chartRef.current) {
       let yearObj = null;
-      for (const obj of dataArr) {
+      for (const obj of ArrFilter) {
         if (obj.ano === year) {
           yearObj = obj;
           break;
@@ -25,8 +61,8 @@ export function ChartVolumeProduct() {
       }
 
       let yearObj2 = null;
-      for (const obj of dataArr) {
-        if (obj.ano === 2023) {
+      for (const obj of ArrFilter) {
+        if (obj.ano === '2023') {
           yearObj2 = obj;
           break;
         }
@@ -72,14 +108,14 @@ export function ChartVolumeProduct() {
             labels: labels,
             datasets: [
               {
-                label: 'Volume - 2022',
+                label: '2022',
                 data: month2022,
                 backgroundColor: ['rgba(255, 102, 0, 0.3)'],
                 borderColor: ['rgba(255, 102, 0, 1)'],
                 borderWidth: 1,
               },
               {
-                label: 'Volume - 2023',
+                label: '2023',
                 data: month2023,
                 backgroundColor: ['#ff66'],
                 borderColor: ['#f0cf65'],
@@ -125,11 +161,12 @@ export function ChartVolumeProduct() {
         console.error('Failed to get context of the canvas element.');
       }
     }
-  }, [dataArr, chartInstanceRef, year]);
+  }, [dataArr, chartInstanceRef, year, nameProduct]);
 
   return (
     <div className="flex justify-between w-[93%] rounded-[0.5rem] ml-[3rem] bg-black h-[28rem]">
       <canvas ref={chartRef} className="" id="myChart"></canvas>
     </div>
   );
+
 }
