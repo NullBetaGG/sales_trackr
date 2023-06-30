@@ -59,7 +59,7 @@ export function ChartVolumeProduct(props: any) {
       if (yearObj) {
         month2022 = yearObj.meses;
       }
-
+      console.log(month2022)
       let yearObj2 = null;
       for (const obj of ArrFilter) {
         if (obj.ano === '2023') {

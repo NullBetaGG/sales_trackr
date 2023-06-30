@@ -1,3 +1,4 @@
+import ChartClient from '@/components/Charts/ChartClients';
 import { ChartVolumeProduct } from '@/components/Charts/ChartVolumeProduct';
 import { Button } from 'antd';
 import { Chart, ChartSquare, Diagram } from 'iconsax-react';
@@ -53,7 +54,8 @@ export default function Maps() {
       <div className="flex ml-[3rem] mt-[3rem] justify-center">
         <div className="relative bg-black w-[52rem] ml-[3rem] rounded-lg">
           <div className="flex justify-center mb-[2rem] mt-[0.5rem] text-[1.5rem] font-extralight font-sans text-[#ff6600]">
-            <span className="mr-[2rem]">Volume de Vendas - {dataProduct.toUpperCase()} </span>
+            <span className="mr-[1rem]">Volume de Vendas</span>
+            <span className="mr-[2rem] text-[1.5rem]"> - {dataProduct.toUpperCase()}</span>
             <Chart
               className="mt-[0.1rem]"
               size="32"
@@ -67,7 +69,8 @@ export default function Maps() {
         </div>
         <div className="relative bg-black w-[52rem] ml-[3rem] rounded-lg">
           <div className="flex justify-center mb-[2rem] mt-[0.5rem] text-[1.5rem] font-extralight font-sans text-[#ff6600]">
-            <span className="mr-[2rem]">Clientes por produto</span>
+            <span className="mr-[1rem]">Clientes por produto</span>
+            <span className="mr-[2rem] text-[1.5rem]"> - {dataProduct.toUpperCase()}</span>
             <ChartSquare
               className="mt-[0.1rem]"
               size="32"
@@ -76,7 +79,7 @@ export default function Maps() {
             />
           </div>
           <div className="flex justify-center">
-            <span>Another chart</span>
+            <ChartClient dataProduct={dataProduct} />
           </div>
         </div>
       </div>
