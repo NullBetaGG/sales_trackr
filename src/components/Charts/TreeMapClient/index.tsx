@@ -1,6 +1,5 @@
 import ClientContext from "@/context/Buyers/ClientContext";
-import React, { useContext, useState } from "react";
-import { TreeMapType } from "@/types/perYear";
+import React, { useContext } from "react";
 import dynamic from "next/dynamic";
 import { ApexOptions } from "apexcharts";
 
@@ -9,51 +8,31 @@ interface Value {
   y: number
 }
 
-export function TreeMapClient() {
+export function TreeMapClient(props: any) {
   const Chart = dynamic(() => import("react-apexcharts"), { ssr: false });
   const dataArr: any[] = useContext(ClientContext);
+  const count = props.clientCount;
 
-  const top10 = dataArr.slice(0, 10).map((item, index) => {
-    let wordsToExtract = 1;
-    if (index === 6 || index === 9) {
-      wordsToExtract = 1;
-    } else if (index === 2 || index === 4) {
-      wordsToExtract = 2;
-    } else if (index === 5) {
-      wordsToExtract = 3;
-    }
+  const top10 = dataArr.slice(0, count).map((item, index) => {
+    const word = item.name.split(' ');
+    let firstWord = word[0];
+    let lastWord = word[word.length - 1];
+    let result = firstWord + ' ' + lastWord;
 
-    if (index === 7 || index === 8) {
-      const words = item.name.split(' ');
-      const firstWord = words[0];
-      const lastWord = words[words.length - 1];
-      return {
-        x: `${firstWord} ${lastWord}`,
-        y: Number(item.value.toFixed(2)),
-      };
+    if (index === 0) {
+      result = word[0] + ' ' + word[word.length - 3] + ' ' + word[word.length - 2];
+    } else if (index === 2) {
+      result = word[0] + ' ' + word[word.length - 2];
+    } else if (index === 1) {
+      result = word[word.length - 1];
+    } else if (index === 3) {
+      result = item.name.slice(0, 16);
+    } else if (index === 5 || index === 7 || index === 8) {
+      result = word[0];
     }
-    if (index === 0 || index === 3) {
-      const words = item.name.split(' ');
-      const firstWord = words[0];
-      const lastWord = words[words.length - 2];
-      return {
-        x: `${firstWord} ${lastWord}`,
-        y: Number(item.value.toFixed(2)),
-      };
-    }
-    if (index === 1) {
-      const words = item.name.split(' ');
-      const lastWord = words[words.length - 1];
-      return {
-        x: lastWord,
-        y: Number(item.value.toFixed(2)),
-      };
-    }
-    const words = item.name.split(' ');
-    const extractedWords = words.slice(0, wordsToExtract);
 
     return {
-      x: extractedWords.join(' '),
+      x: result,
       y: Number(item.value.toFixed(2)),
     };
   });
@@ -75,6 +54,35 @@ export function TreeMapClient() {
     }
   ];
   const options: ApexOptions = {
+    tooltip: {
+      enabled: true,
+      custom: function ({ series, seriesIndex, dataPointIndex, w }) {
+        const number = w.globals.series[seriesIndex][dataPointIndex];
+        const name = top10[dataPointIndex].x;
+        const numberValue = Math.floor(number);
+        const stringN = numberValue.toString();
+        let value = '';
+
+        if (stringN.length === 5) {
+          value = stringN.slice(0, 2) + '.' + stringN.slice(2, 3) + ' K' + ' - Ton';
+        } else if (stringN.length === 6) {
+          value = stringN.slice(0, 3) + '.' + stringN.slice(3, 4) + ' K' + ' - Ton';
+        } else if (stringN.length === 4) {
+          value = stringN.slice(0, 1) + '.' + stringN.slice(1, 2) + ' K' + ' - Ton';
+        } else {
+          value = stringN;
+        }
+
+        const tooltipContent = `
+          <div style="text-align: center;">
+            <span style="font-weight: bold;">${name}</span><br/>
+            Qtd: <strong>${value}</strong>
+          </div>
+        `;
+
+        return tooltipContent;
+      }
+    },
     legend: {
       show: false
     },
@@ -98,7 +106,7 @@ export function TreeMapClient() {
         options={options}
         series={series}
         type="treemap"
-        width="858"
+        width="840"
         height="410"
       />
     </div>

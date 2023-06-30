@@ -17,11 +17,11 @@ export default function SupplierProvider({ children }: any) {
       });
   }, []);
 
-  const supplier22 = data[2];
+  const supplier23 = data[3];
   const supplierFill: TreeMapType[] = [];
 
-  if (supplier22) {
-    const suppliers = Object.values(supplier22);
+  if (supplier23) {
+    const suppliers = Object.values(supplier23);
     suppliers.forEach((monthContracts: any) => {
       monthContracts.forEach((contract: any) => {
         const supplierIndex = supplierFill.findIndex(

@@ -17,11 +17,11 @@ export default function ClientProvider({ children }: any) {
       });
   }, []);
 
-  const clients22 = data[2];
+  const clients23 = data[3];
   const clientFill: TreeMapType[] = [];
 
-  if (clients22) {
-    const clients = Object.values(clients22);
+  if (clients23) {
+    const clients = Object.values(clients23);
     clients.forEach((monthContracts: any) => {
       monthContracts.forEach((contract: any) => {
         const clientIndex = clientFill.findIndex(

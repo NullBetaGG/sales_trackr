@@ -72,14 +72,14 @@ export function ChartVolume() {
             labels: labels,
             datasets: [
               {
-                label: 'Volume - 2022',
+                label: '2022',
                 data: month2022,
                 backgroundColor: ['rgba(255, 102, 0, 0.3)'],
                 borderColor: ['rgba(255, 102, 0, 1)'],
                 borderWidth: 1,
               },
               {
-                label: 'Volume - 2023',
+                label: '2023',
                 data: month2023,
                 backgroundColor: ['#ff66'],
                 borderColor: ['#f0cf65'],
@@ -128,7 +128,7 @@ export function ChartVolume() {
   }, [dataArr, chartInstanceRef, year]);
 
   return (
-    <div className="flex justify-between w-[90%] rounded-[0.5rem] ml-[2rem] bg-black h-[22rem]">
+    <div className="flex justify-between w-[93%] rounded-[0.5rem] ml-[3rem] bg-black">
       <canvas ref={chartRef} className="" id="myChart"></canvas>
     </div>
   );

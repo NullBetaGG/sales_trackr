@@ -1,8 +1,7 @@
 import ProductContext from '@/context/Product/ProductContext';
 import { Data } from '@/types/groupedItens';
 import dynamic from 'next/dynamic';
-import React, { useContext, useEffect } from 'react';
-import Chart from "react-apexcharts";
+import React, { useContext } from 'react';
 import { ApexOptions } from "apexcharts";
 
 interface Value {
@@ -20,11 +19,16 @@ export function TreeMapProduct() {
     let sum = 0;
     arrContracts.forEach((cont) => {
       const qtd = +cont.Quantidade;
-      if (!isNaN(qtd)) {
+      const contractDate = new Date(cont.dt_contrato);
+      const year2023 = new Date('2023-01-01');
+
+      if (contractDate >= year2023) {
         sum += qtd;
       }
     });
-    arrValues.push({ x: nameProd, y: sum });
+    if (sum != 0) {
+      arrValues.push({ x: nameProd, y: sum });
+    }
   });
 
   arrValues.sort((a, b) => {
@@ -38,8 +42,8 @@ export function TreeMapProduct() {
   });
 
   const roundedArrValues = arrValues.map((item) => ({
-    x: item.x,
-    y: parseFloat(item.y.toFixed(2)) // Arredondando para duas casas decimais
+    x: item.x.toUpperCase(),
+    y: parseFloat(item.y.toFixed(2))
   }));
 
   const Chart = dynamic(() => import("react-apexcharts"), { ssr: false });
@@ -49,7 +53,37 @@ export function TreeMapProduct() {
       data: roundedArrValues
     }
   ];
+
   const options: ApexOptions = {
+    tooltip: {
+      enabled: true,
+      custom: function ({ series, seriesIndex, dataPointIndex, w }) {
+        const number = w.globals.series[seriesIndex][dataPointIndex];
+        const name = roundedArrValues[dataPointIndex].x;
+        const numberValue = Math.floor(number);
+        const stringN = numberValue.toString();
+        let value = '';
+
+        if (stringN.length === 5) {
+          value = stringN.slice(0, 2) + '.' + stringN.slice(2, 3) + ' K' + ' - Ton';
+        } else if (stringN.length === 6) {
+          value = stringN.slice(0, 3) + '.' + stringN.slice(3, 4) + ' K' + ' - Ton';
+        } else if (stringN.length === 4) {
+          value = stringN.slice(0, 1) + '.' + stringN.slice(1, 2) + ' K' + ' - Ton';
+        } else {
+          value = stringN;
+        }
+
+        const tooltipContent = `
+          <div style="text-align: center;">
+            <span style="font-weight: bold;">${name.toUpperCase()}</span><br/>
+            Qtd: <strong>${value}</strong>
+          </div>
+        `;
+
+        return tooltipContent;
+      }
+    },
     legend: {
       show: false
     },
@@ -73,8 +107,8 @@ export function TreeMapProduct() {
         options={options}
         series={series}
         type="treemap"
-        width="850"
-        height="410"
+        width="840"
+        height="415"
       />
     </div>
   );
