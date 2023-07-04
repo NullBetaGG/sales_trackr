@@ -7,7 +7,7 @@ export default function ProductProvider({ children }: any) {
   const [data, setData] = useState<DataGrouped[]>([]);
 
   useEffect(() => {
-    fetch('/data/newContractCategory.json')
+    fetch('/data/newContractCategory_2.json')
       .then(response => response.json())
       .then(data => {
         const arrData = Object.values(data);

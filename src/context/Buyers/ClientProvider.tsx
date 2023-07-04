@@ -7,7 +7,7 @@ export default function ClientProvider({ children }: any) {
   const [data, setData] = useState<any[]>([]);
 
   useEffect(() => {
-    fetch('/data/perYear.json')
+    fetch('/data/perYear_2.json')
       .then(response => response.json())
       .then(data => {
         const arrData = Object.values(data);
