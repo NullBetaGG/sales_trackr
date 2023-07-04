@@ -48,7 +48,11 @@ export default function ChartClient(props: any) {
         ano,
         mes: Array(12).fill(0)
       };
-      novoObjetoAno.mes[mes - 1] = comprimento;
+      if (comprimento === 0) {
+        novoObjetoAno.mes[mes - 1] = null;
+      } else {
+        novoObjetoAno.mes[mes - 1] = comprimento;
+      }
       novoArray.push(novoObjetoAno);
     }
   });
@@ -61,12 +65,12 @@ export default function ChartClient(props: any) {
       month2022 = arr.mes;
     };
     if (arr.ano === '2023') {
-      month2023 = arr.mes;
+      month2023 = arr.mes.slice(0, 6);
     };
   });
 
-  console.log(novoArray);
-  console.log(compradoresPorMes)
+  console.log(month2022);
+  console.log(month2023);
 
   useEffect(() => {
     if (dataArr && chartRef.current) {
