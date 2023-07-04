@@ -20,9 +20,10 @@ export function TreeMapSupplier(props: any) {
     let lastWord = word[word.length - 1];
     let result = firstWord + ' ' + lastWord;
 
-    if (index === 0 || index === 1 || index === 5 || index === 8) {
+    if (index >= 0 || index <= 3) {
       result = word[0];
-    } else if (index === 4) {
+    }
+    if (index === 5 || index === 6 || index === 8) {
       result = word[0] + ' ' + word[1];
     }
 
@@ -48,6 +49,7 @@ export function TreeMapSupplier(props: any) {
       data: top10
     }
   ];
+  console.log(dataArr);
   const options: ApexOptions = {
     tooltip: {
       enabled: true,
