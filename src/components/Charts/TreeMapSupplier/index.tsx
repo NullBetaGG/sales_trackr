@@ -103,8 +103,8 @@ export function TreeMapSupplier(props: any) {
         options={options}
         series={series}
         type="treemap"
-        width="840"
-        height="410"
+        width="672"
+        height="395"
       />
     </div>
   );

@@ -107,8 +107,8 @@ export function TreeMapProduct() {
         options={options}
         series={series}
         type="treemap"
-        width="840"
-        height="415"
+        width="680"
+        height="402"
       />
     </div>
   );
