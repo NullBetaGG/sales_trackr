@@ -6,6 +6,7 @@ import { TreeMapClient } from '@/components/Charts/TreeMapClient';
 import { TreeMapSupplier } from '@/components/Charts/TreeMapSupplier';
 import { Button } from 'antd';
 import { ChartVolumeYear } from '@/components/Charts/ChartVolumeYear';
+import ChartYear from '@/components/Charts/ChartYear';
 
 
 export default function Home() {
@@ -34,11 +35,12 @@ export default function Home() {
   return (
     <div className="w-[99vw] pl-[6rem] pr-[1.8rem] flex justify-between mx-2 h-[90vh] mt-[-6.5rem]">
       <div>
-        <div className="hover:border-[#888888] justify-center hover:scale-[1.015] transition-all duration-[500ms] bg-[#000000] hover:border-2px w-[24rem] h-[18.3rem] z-20 rounded-[0.5rem]">
+        <div className="hover:border-[#888888] justify-center hover:scale-[1.015] transition-all duration-[500ms] bg-[#000000] hover:border-2px w-[24rem] h-[55.3rem] z-20 rounded-[0.5rem]">
           <div className='text-[#ff6600] flex w-[100%] text-[1.2rem] font-extralight font-sans justify-center items-center mb-[0.2rem]'>
             <p className='mt-[0.5rem] mb-[1rem]'>Volume Anual de Vendas</p>
           </div>
           <ChartVolumeYear />
+          <ChartYear />
         </div>
       </div>
       <div>

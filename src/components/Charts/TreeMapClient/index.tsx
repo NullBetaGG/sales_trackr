@@ -19,17 +19,17 @@ export function TreeMapClient(props: any) {
     let lastWord = word[word.length - 1];
     let result = firstWord + ' ' + lastWord;
 
-    if (index === 0) {
-      result = word[0] + ' ' + word[word.length - 3] + ' ' + word[word.length - 2];
-    } else if (index === 2) {
-      result = word[0] + ' ' + word[word.length - 2];
-    } else if (index === 1) {
-      result = word[word.length - 1];
-    } else if (index === 3) {
-      result = item.name.slice(0, 16);
-    } else if (index === 5 || index === 7 || index === 8) {
-      result = word[0];
-    }
+    // if (index === 0) {
+    //   result = word[0] + ' ' + word[word.length - 3] + ' ' + word[word.length - 2];
+    // } else if (index === 2) {
+    //   result = word[0] + ' ' + word[word.length - 2];
+    // } else if (index === 1) {
+    //   result = word[word.length - 1];
+    // } else if (index === 3) {
+    //   result = item.name.slice(0, 16);
+    // } else if (index === 5 || index === 7 || index === 8) {
+    //   result = word[0];
+    // }
 
     return {
       x: result,

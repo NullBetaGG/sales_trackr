@@ -1,14 +1,13 @@
 import { TreeMapType } from "@/types/perYear";
 import SupplierContext from "./SupplierContext";
 import React, { useState, useEffect } from "react";
-import { Contract } from "@/types/groupedItens";
 
 
 export default function SupplierProvider({ children }: any) {
   const [data, setData] = useState<any[]>([]);
 
   useEffect(() => {
-    fetch('/data/perYear_2.json')
+    fetch('/data/perYear_3.json')
       .then(response => response.json())
       .then(data => {
         const arrData = Object.values(data);

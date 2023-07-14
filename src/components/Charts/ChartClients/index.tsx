@@ -57,20 +57,21 @@ export default function ChartClient(props: any) {
     }
   });
 
+  let month2021: number[] = [];
   let month2022: number[] = [];
   let month2023: number[] = [];
 
   novoArray.forEach((arr: any) => {
+    if (arr.ano === '2021') {
+      month2021 = arr.mes;
+    };
     if (arr.ano === '2022') {
       month2022 = arr.mes;
     };
     if (arr.ano === '2023') {
-      month2023 = arr.mes.slice(0, 6);
+      month2023 = arr.mes.slice(0, 7);
     };
   });
-
-  console.log(month2022);
-  console.log(month2023);
 
   useEffect(() => {
     if (dataArr && chartRef.current) {
@@ -114,13 +115,13 @@ export default function ChartClient(props: any) {
                 borderColor: ['#f0cf65'],
                 borderWidth: 1,
               },
-              // {
-              //   label: 'Média',
-              //   data: avrg,
-              //   backgroundColor: ['#2357'],
-              //   borderColor: ['#235789'],
-              //   borderWidth: 1,
-              // },
+              {
+                label: '2021',
+                data: month2021,
+                backgroundColor: ['#2357'],
+                borderColor: ['#235789'],
+                borderWidth: 1,
+              },
             ],
           },
           options: {

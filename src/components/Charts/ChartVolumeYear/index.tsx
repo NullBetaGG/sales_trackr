@@ -15,7 +15,7 @@ export function ChartVolumeYear() {
     sum.meses.forEach((value: any) => {
       soma += value;
     });
-    if (soma > 20000) {
+    if (soma > 2000) {
       yearsSum.push(soma);
     }
   });
@@ -27,6 +27,8 @@ export function ChartVolumeYear() {
       const ctx = chartRef.current.getContext('2d');
       if (ctx) {
         const labels = [
+          '2019',
+          '2020',
           '2021',
           '2022',
           '2023'
