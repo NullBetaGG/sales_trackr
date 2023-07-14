@@ -74,7 +74,7 @@ export default function ChartYear() {
                     if (label) {
                       label += ': ';
                     }
-                    label += context.parsed.y.toLocaleString('pt-BR') + ' Clientes';
+                    label += context.parsed.y.toLocaleString('pt-BR') + ' Ton';
                     return label;
                   },
                 },
