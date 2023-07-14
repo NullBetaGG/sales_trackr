@@ -1,7 +1,7 @@
 export default function Maps() {
   let component = 'Sales';
   return (
-    <div className="flex justify-center">
+    <div className="flex text-[#ffffff] justify-center">
       <div className="mt-20">
         <span className="uppercase font-light text-[2rem]">this is the</span>
         &nbsp;

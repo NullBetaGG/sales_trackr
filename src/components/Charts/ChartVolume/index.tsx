@@ -1,15 +1,50 @@
-import React, { useEffect, useRef, useContext } from "react";
+import React, { useEffect, useRef, useContext, useState } from "react";
 import Chart from 'chart.js/auto';
 import VolumeContext from '@/context/Volume/VolumeContext';
+import { YearObj } from "@/types/volume";
 
 export function ChartVolume() {
   const chartRef = useRef<HTMLCanvasElement | null>(null);
-  const data = useContext(VolumeContext);
+  const dataArr: YearObj[] = useContext(VolumeContext);
   const chartInstanceRef = useRef<any>(null);
+  const [year, setYear] = useState<string>('2022');
 
 
   useEffect(() => {
-    if (data && chartRef.current) {
+    if (dataArr && chartRef.current) {
+      let yearObj = null;
+      for (const obj of dataArr) {
+        if (obj.ano === year) {
+          yearObj = obj;
+          break;
+        }
+      }
+      let month2022: any = null;
+      if (yearObj) {
+        month2022 = yearObj.meses;
+      }
+
+      let yearObj2 = null;
+      for (const obj of dataArr) {
+        if (obj.ano === '2023') {
+          yearObj2 = obj;
+          break;
+        }
+      }
+      let month2023 = null;
+      if (yearObj2) {
+        month2023 = yearObj2.meses;
+      }
+      let avrg: any[] = [];
+      if (month2022 && month2023) {
+        const result = month2023.map((value2023: any, index) => {
+          const value2022 = month2022![index];
+          const sum = value2022 + value2023;
+          const average = value2023 === 0 ? 0 : sum / 2;
+          return average;
+        });
+        avrg = result
+      }
       const ctx = chartRef.current.getContext('2d');
       if (ctx) {
         const labels = [
@@ -37,10 +72,24 @@ export function ChartVolume() {
             labels: labels,
             datasets: [
               {
-                label: 'Volume Mensal de Vendas - 2022',
-                data: data,
+                label: '2022',
+                data: month2022,
                 backgroundColor: ['rgba(255, 102, 0, 0.3)'],
                 borderColor: ['rgba(255, 102, 0, 1)'],
+                borderWidth: 1,
+              },
+              {
+                label: '2023',
+                data: month2023,
+                backgroundColor: ['#ff66'],
+                borderColor: ['#f0cf65'],
+                borderWidth: 1,
+              },
+              {
+                label: 'Média',
+                data: avrg,
+                backgroundColor: ['#2357'],
+                borderColor: ['#235789'],
                 borderWidth: 1,
               },
             ],
@@ -76,10 +125,10 @@ export function ChartVolume() {
         console.error('Failed to get context of the canvas element.');
       }
     }
-  }, [data, chartInstanceRef]);
+  }, [dataArr, chartInstanceRef, year]);
 
   return (
-    <div className="flex justify-between w-[100%] rounded-[1.5rem] bg-black h-[25rem]">
+    <div className="flex justify-between w-[95%] mt-[1rem] rounded-[0.5rem] ml-[0.5rem] bg-black">
       <canvas ref={chartRef} className="" id="myChart"></canvas>
     </div>
   );

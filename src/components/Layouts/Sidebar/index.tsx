@@ -15,7 +15,7 @@ export function Sidebar() {
   const router = useRouter();
   return (
     <div>
-      <div className="hover:w-[12rem] group/sidebar h-[100vh] w-[5.2rem] bg-[#0b0b0b] mt-[-10.5rem] transition-all duration-[1200ms] rounded-[1rem] max-w[12rem] fixed">
+      <div className="hover:w-[12rem] group/sidebar h-[100vh] w-[5.2rem] bg-[#0b0b0b] z-50 mt-[-10.5rem] transition-all duration-[1200ms] rounded-[1rem] max-w[12rem] fixed">
         <div className="w-[3.1rem] h-[3.1rem] bg-[#eb000000] rounded-[50%] border-[3px] border-[#ff6600] box-border ml-[1rem] mt-[1rem]">
           <Player
             className="mt-[-2rem]"
@@ -26,7 +26,7 @@ export function Sidebar() {
           >
           </Player>
         </div>
-        <div className="relative mt-[0.5rem] font-montserrat">
+        <div className="relative mt-[0.5rem] text-[#ffffff] font-montserrat">
           <span className="ml-[1.4rem] text-base block">Sales</span>
           <span className="ml-[1.2rem] text-base block">Trackr</span>
         </div>
@@ -42,7 +42,7 @@ export function Sidebar() {
             >
               <Element4 size="28" color="#ff6600" variant="TwoTone" />
               <div className="w-[1rem] transition-all grow duration-[1000ms] group-hover/sidebar:w-[7rem] h-[1.5rem] ml-[0.5rem] border-[#ff6600]">
-                <span className="w-[1rem] font-light transition-all opacity-0 group-hover/sidebar:opacity-100">
+                <span className="w-[1rem] text-[#ffffff] font-light transition-all opacity-0 group-hover/sidebar:opacity-100">
                   <span>Dashboard</span>
                 </span>
               </div>
@@ -56,7 +56,7 @@ export function Sidebar() {
             >
               <Activity size="28" color="#ff6600" variant="TwoTone" />
               <div className="w-[1rem] transition-all grow duration-[1000ms] group-hover/sidebar:w-[7rem] h-[1.5rem] ml-[0.5rem] border-[#ff6600]">
-                <span className="w-[1rem] font-light transition-all opacity-0 group-hover/sidebar:opacity-100">
+                <span className="w-[1rem] text-[#ffffff] font-light transition-all opacity-0 group-hover/sidebar:opacity-100">
                   <span>Analytics</span>
                 </span>
               </div>
@@ -70,7 +70,7 @@ export function Sidebar() {
             >
               <Coin1 size="28" color="#ff6600" variant="TwoTone" />
               <div className="w-[1rem] transition-all grow duration-[1000ms] group-hover/sidebar:w-[7rem] h-[1.5rem] ml-[0.5rem] border-[#ff6600]">
-                <span className="w-[1rem] font-light transition-all opacity-0 group-hover/sidebar:opacity-100">
+                <span className="w-[1rem] text-[#ffffff] font-light transition-all opacity-0 group-hover/sidebar:opacity-100">
                   <span>Vendas</span>
                 </span>
               </div>
@@ -84,7 +84,7 @@ export function Sidebar() {
             >
               <Map size="28" color="#ff6600" variant="TwoTone" />
               <div className="w-[1rem] transition-all grow duration-[1000ms] group-hover/sidebar:w-[7rem] h-[1.5rem] ml-[0.5rem] border-[#ff6600]">
-                <span className="w-[1rem] font-light transition-all opacity-0 group-hover/sidebar:opacity-100">
+                <span className="w-[1rem] text-[#ffffff] font-light transition-all opacity-0 group-hover/sidebar:opacity-100">
                   <span>Mapas</span>
                 </span>
               </div>
@@ -98,7 +98,7 @@ export function Sidebar() {
             >
               <MoneyRecive size="28" color="#ff6600" variant="TwoTone" />
               <div className="w-[1rem] transition-all grow duration-[1000ms] group-hover/sidebar:w-[7rem] h-[1.5rem] ml-[0.5rem] border-[#ff6600]">
-                <span className="w-[1rem] font-light transition-all opacity-0 group-hover/sidebar:opacity-100">
+                <span className="w-[1rem] text-[#ffffff] font-light transition-all opacity-0 group-hover/sidebar:opacity-100">
                   <span>Fornecedores</span>
                 </span>
               </div>
@@ -112,7 +112,7 @@ export function Sidebar() {
             >
               <Setting2 size="28" color="#ff6600" variant="TwoTone" />
               <div className="w-[1rem] transition-all grow duration-[1000ms] group-hover/sidebar:w-[7rem] h-[1.5rem] ml-[0.5rem] border-[#ff6600]">
-                <span className="w-[1rem] font-light transition-all opacity-0 group-hover/sidebar:opacity-100">
+                <span className="w-[1rem] text-[#ffffff] font-light transition-all opacity-0 group-hover/sidebar:opacity-100">
                   <span>Configurações</span>
                 </span>
               </div>
