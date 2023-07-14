@@ -9,7 +9,7 @@ export default function PriceProvider({ children }: any) {
   const [data, setData] = useState<Data[]>([]);
 
   useEffect(() => {
-    fetch('/data/products.json')
+    fetch('/data/products_3.json')
       .then(response => response.json())
       .then(data => {
         const arrData = Object.values(data);

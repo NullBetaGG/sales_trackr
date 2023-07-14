@@ -6,7 +6,7 @@ export default function VolumeProductProvider({ children }: any) {
   const [data, setData] = useState<any[]>([]);
 
   useEffect(() => {
-    fetch('/data/contractsPerYear_2.json')
+    fetch('/data/contractsPerYear_3.json')
       .then(response => response.json())
       .then(data => {
         const arrData = Object.values(data);
