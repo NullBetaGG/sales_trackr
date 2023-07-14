@@ -17,7 +17,7 @@ export default function SupplierProvider({ children }: any) {
       });
   }, []);
 
-  const supplier23 = data[3];
+  const supplier23 = data[5];
   const supplierFill: TreeMapType[] = [];
 
   if (supplier23) {

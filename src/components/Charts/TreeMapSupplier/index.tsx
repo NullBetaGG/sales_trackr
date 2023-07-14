@@ -14,19 +14,18 @@ export function TreeMapSupplier(props: any) {
   const dataArr: any[] = useContext(SupplierContext);
   const count = props.dataCount;
 
-  let width = count === 10 ? "695" : "662"
   const top10 = dataArr.slice(0, count).map((item, index) => {
     const word = item.name.split(' ');
     let firstWord = word[0];
     let lastWord = word[word.length - 1];
     let result = firstWord + ' ' + lastWord;
 
-    // if (index >= 0 || index <= 3) {
-    //   result = word[0];
-    // }
-    // if (index === 5 || index === 6 || index === 8) {
-    //   result = word[0] + ' ' + word[1];
-    // }
+    if (index === 3 || index === 4 || index === 8 || index === 9) {
+      result = word[0] + ' ' + word[1] + ' ' + word[2];
+    }
+    if (index === 7) {
+      result = word[0] + ' ' + word[1];
+    }
 
     return {
       x: result,
@@ -104,7 +103,7 @@ export function TreeMapSupplier(props: any) {
         options={options}
         series={series}
         type="treemap"
-        width={width}
+        width="662"
         height="395"
       />
     </div>
