@@ -69,7 +69,7 @@ export default function Login() {
     <>
       {contextHolder}
       {contextNotification}
-      <div className="flex bg-white h-[100vh] relative">
+      <div className="flex text-[#ffffff] bg-white h-[100vh] relative">
         <div className="bg-[#000000] w-[40vw] flex h-[100vh] items-center relative z-10">
           <div className="flex ml-[11rem] mt-[-10rem] flex-col">
             <Player
