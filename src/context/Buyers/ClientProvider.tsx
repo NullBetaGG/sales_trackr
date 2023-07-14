@@ -17,7 +17,7 @@ export default function ClientProvider({ children }: any) {
       });
   }, []);
 
-  const clients23 = data[3];
+  const clients23 = data[5];
   const clientFill: TreeMapType[] = [];
 
   if (clients23) {
